@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "fs-extra": "^11.4.0",
+    "js-yaml": "^5.2.2"
+  }
+}

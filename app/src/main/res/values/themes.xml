@@ -1,0 +1,4 @@
+<resources>
+    <!-- Minimal platform theme used only as the pre-Compose window background/bridge; all real theming is Material3 Compose (see ui/theme/Theme.kt). -->
+    <style name="Theme.SmsExpenseTracker" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
