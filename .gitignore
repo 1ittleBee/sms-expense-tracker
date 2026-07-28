@@ -11,6 +11,13 @@
 *.apk
 *.aab
 
+# AI-DLC framework, planning docs, and its tooling manifests - not app code
+.claude/
+.specsmd/
+memory-bank/
+package.json
+package-lock.json
+
 # Node (AI-DLC tooling scripts under .specsmd/)
 node_modules/
 
