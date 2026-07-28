@@ -9,11 +9,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.trackapp.smsexpensetracker.smsingestion.presentation.ImportProgressScreen
 import com.trackapp.smsexpensetracker.smsingestion.presentation.PermissionScreen
 import com.trackapp.smsexpensetracker.ui.theme.SmsExpenseTrackerTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val ROUTE_PERMISSION = "permission"
+private const val ROUTE_IMPORT = "import"
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -27,11 +29,14 @@ class MainActivity : ComponentActivity() {
                         composable(ROUTE_PERMISSION) {
                             PermissionScreen(
                                 onPermissionGranted = {
-                                    // Bolt 002-sms-ingestion (import + live detection) reacts to the
-                                    // granted state via PermissionCoordinator; no further destination
-                                    // exists yet in this bolt's scope.
+                                    navController.navigate(ROUTE_IMPORT) {
+                                        popUpTo(ROUTE_PERMISSION) { inclusive = true }
+                                    }
                                 },
                             )
+                        }
+                        composable(ROUTE_IMPORT) {
+                            ImportProgressScreen()
                         }
                     }
                 }

@@ -24,5 +24,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--
+            Read-only observer of incoming SMS (bolt 002-sms-ingestion). Restricted to senders
+            holding BROADCAST_SMS (system-only) so other apps can't spoof this broadcast to us.
+            SMS_RECEIVED_ACTION is exempted from Android 8+'s implicit-broadcast manifest
+            restrictions, so a static receiver remains valid at minSdk 26.
+        -->
+        <receiver
+            android:name=".smsingestion.data.receiver.SmsReceiver"
+            android:exported="true"
+            android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>
