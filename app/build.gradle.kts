@@ -38,6 +38,12 @@ android {
         compose = true
     }
 
+    composeOptions {
+        // Must match the Kotlin version above (1.9.24) - see:
+        // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
+        kotlinCompilerExtensionVersion = "1.5.14"
+    }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
